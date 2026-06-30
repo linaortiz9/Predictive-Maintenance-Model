@@ -7,3 +7,6 @@ All notable changes to this project are documented in this file.
 
 ### v1.0.2 (2026-06-29)
 - Clarified configuration notes and troubleshooting steps.
+
+### v1.0.3 (2026-06-30)
+- Cleaned up environment parsing fallbacks and defaults.
