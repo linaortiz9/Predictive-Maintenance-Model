@@ -16,3 +16,6 @@ All notable changes to this project are documented in this file.
 
 ### v1.0.5 (2026-07-15)
 - Clarified configuration notes and troubleshooting steps.
+
+### v1.0.6 (2026-09-02)
+- Cleaned up environment parsing fallbacks and defaults.
