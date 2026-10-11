@@ -19,3 +19,6 @@ All notable changes to this project are documented in this file.
 
 ### v1.0.6 (2026-09-02)
 - Cleaned up environment parsing fallbacks and defaults.
+
+### v1.0.7 (2026-10-11)
+- Added extra unit assertions for boundary inputs.
