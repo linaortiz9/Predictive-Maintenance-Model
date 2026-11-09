@@ -9,3 +9,6 @@
 
 ### Cache Eviction
 Expired entries are purged lazily on reads and swept before reaching `max_items` capacity.
+
+### Logging Conventions
+Emit UTC ISO-8601 timestamps with flat `key=value` context fields for easy log parsing.
