@@ -1,0 +1,28 @@
+name: Scheduled Health Check
+on:
+  schedule:
+    - cron: '31 17 * * *'
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Record status snapshot
+        run: |
+          git config --local user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+          git config --local user.name "${{ github.actor }}"
+          REST_CHANCE=$(( RANDOM % 100 ))
+          if [ $REST_CHANCE -lt 25 ]; then exit 0; fi
+          mkdir -p ".meta"
+          NUM_COMMITS=$(( ( RANDOM % 3 ) + 1 ))
+          for i in $(seq 1 $NUM_COMMITS); do
+            echo "sync-$i $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> ".meta/health.log"
+            git add ".meta/health.log"
+            git commit -m "chore: record status snapshot [skip ci]"
+            sleep $(( ( RANDOM % 3 ) + 2 ))
+          done
+          git push
